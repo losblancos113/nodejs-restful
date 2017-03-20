@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-restful",
+  "version": "1.0.0",
+  "description": "RESTFUL APT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rest"
+  ],
+  "author": "Hoang Minh Tri",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "mongoose": "^4.9.0",
+    "nodemon": "^1.11.0"
+  }
+}
