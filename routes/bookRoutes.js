@@ -3,33 +3,10 @@ const express = require('express');
 
 var routes = (Book) => {
   var bookRouter = express.Router();
-
+  var bookController = require('../controllers/bookController')(Book);
   bookRouter.route('/books')
-    .post((req, res) => {
-      let book = new Book(req.body);
-      console.log(book);
-      book.save((err) => {
-        if (err) {
-          res.status(500).send(err);
-        }else {
-          res.status(200).send("INSERT SUCCESSED");
-        }
-      });
-    })
-    .get((req, res) => {
-      let query = {};
-      if (req.query.genre) {
-        query.genre = req.query.genre;
-      }
-      Book.find(query,(err, books) => {
-        if (err) {
-          console.log(err);
-          res.status(500).send(err);
-        }else {
-          res.json(books);
-        }
-      });
-    });
+    .post(bookController.post)
+    .get(bookController.get);
 
   bookRouter.use('/books/:bookId', (req, res, next) => {
     Book.findById(req.params.bookId,(err, book) => {
@@ -78,6 +55,15 @@ var routes = (Book) => {
           res.status(500).send(err);
         }else {
           res.json(req.book);
+        }
+      });
+    })
+    .delete((req, res) => {
+      req.book.remove((err) => {
+        if (err) {
+          res.status(500).send(err);
+        }else {
+          res.status(204).send('Removed')
         }
       });
     });

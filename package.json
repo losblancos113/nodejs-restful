@@ -15,7 +15,10 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "gulp": "^3.9.1",
+    "gulp-mocha": "^4.1.0",
     "mongoose": "^4.9.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "should": "^11.2.1",
+    "sinon": "^2.1.0"
   }
 }
